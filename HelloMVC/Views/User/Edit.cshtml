@@ -1,0 +1,12 @@
+﻿@model BLL.UserFM
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm("Edit", "User", FormMethod.Post))
+{
+    @Html.EditorFor(model => model)
+}

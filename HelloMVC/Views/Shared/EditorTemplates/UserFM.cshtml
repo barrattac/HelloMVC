@@ -1,0 +1,12 @@
+﻿@model BLL.UserFM
+
+@Html.HiddenFor(model => model.ID)
+
+<div class="error">
+    @ViewBag.ErrorMessage
+</div>
+<div class="emailBox">
+    @Html.LabelFor(model => model.Email)
+    @Html.TextBoxFor(model => model.Email)
+</div>
+<input type="submit" value="Submit" />

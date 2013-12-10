@@ -1,0 +1,23 @@
+﻿@model BLL.LoginFM
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm("Login", "Login", FormMethod.Post))
+{
+    <div class="error">
+        @ViewBag.ErrorMessage
+    </div>
+    <div class="emailBox">
+        @Html.LabelFor(model => model.Email)
+        @Html.TextBoxFor(model => model.Email)
+    </div>
+    <div class="passwordBox">
+        @Html.LabelFor(model => model.Password)
+        @Html.PasswordFor(model => model.Password)
+    </div>
+    <input type="submit" value="Login" />
+}

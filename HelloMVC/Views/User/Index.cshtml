@@ -1,0 +1,27 @@
+﻿@model BLL.UsersVM
+
+@using BLL;
+
+@Html.ActionLink("Create", "Create")
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (UserVM user in Model.Users)
+        {
+            <tr>
+                <td>@user.ID</td>
+                <td>@user.Email</td>
+                <td>@Html.ActionLink("Edit", "Edit", new { ID = user.ID })</td>
+                <td>@Html.ActionLink("Delete", "Delete", new { ID = user.ID })</td>
+            </tr>
+        }
+    </tbody>
+</table>
