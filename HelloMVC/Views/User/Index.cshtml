@@ -20,6 +20,7 @@
                 <td>@user.ID</td>
                 <td>@user.Email</td>
                 <td>@Html.ActionLink("Edit", "Edit", new { ID = user.ID })</td>
+                <td>@Html.ActionLink("ChangePassword", "ChangePassword", new {ID = user.ID})</td>
                 <td>@Html.ActionLink("Delete", "Delete", new { ID = user.ID })</td>
             </tr>
         }

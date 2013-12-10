@@ -76,13 +76,39 @@ namespace BLL
             UserFM userFM = new UserFM(user);
             return userFM;
         }
-
+        public ChangePassFM GetChangePassFM(int ID)
+        {
+            UserDAO dao = new UserDAO();
+            User user = dao.GetUserByID(ID);
+            ChangePassFM changePass = new ChangePassFM(user);
+            return changePass;
+        }
         public void UpdateUser(UserFM userFM)
         {
             UserDAO dao = new UserDAO();
             User user = dao.GetUserByID(userFM.ID);
             user.Email = userFM.Email;
             dao.UpdateUser(user);
+        }
+        public void UpdateUser(ChangePassFM pass)
+        {
+            UserDAO dao = new UserDAO();
+            User user = dao.GetUserByID(pass.ID);
+            user.Password = pass.NewPass;
+            dao.UpdateUser(user);
+        }
+        public void DeleteUser(int ID)
+        {
+            UserDAO dao = new UserDAO();
+            dao.DeleteUser(ID);
+        }
+        public bool VerifyPass(ChangePassFM pass)
+        {
+            if (pass.CurrentPass == GetChangePassFM(pass.ID).CurrentPass)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

@@ -108,5 +108,13 @@ namespace DAL
         {
             return ReadUsers("GetAllUser", null);
         }
+        public void DeleteUser(int ID)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@ID", ID),
+            };
+            Write("DeleteUser", parameters);
+        }
     }
 }

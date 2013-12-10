@@ -15,7 +15,7 @@ namespace HelloMVC.Controllers
         {
             if (Session["UserId"] == null)
             {
-                return RedirectToAction("Index", "Login"); 
+                return RedirectToAction("Index", "Login");
             }
             UserService userS = new UserService();
             UsersVM usersVM = userS.GetUsers();
@@ -50,9 +50,29 @@ namespace HelloMVC.Controllers
             return RedirectToAction("Index");
             //else return to edit with errors
         }
-        public void Delete(int ID)
+        [HttpGet]
+        public ActionResult ChangePassword(int ID)
         {
-
+            UserService users = new UserService();
+            return View(users.GetChangePassFM(ID));
+        }
+        [HttpPost]
+        public ActionResult ChangePassword(ChangePassFM pass)
+        {
+            //if user valid user
+            UserService users = new UserService();
+            if (users.VerifyPass(pass) && pass.NewPass == pass.ConfirmPass && pass.NewPass.Length > 7)
+            {
+                users.UpdateUser(pass);
+            }
+            return RedirectToAction("Index");
+            //else return with errors
+        }
+        public ActionResult Delete(int ID)
+        {
+            UserService users = new UserService();
+            users.DeleteUser(ID);
+            return RedirectToAction("Index");
         }
     }
 }
