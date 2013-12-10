@@ -110,5 +110,12 @@ namespace BLL
             }
             return false;
         }
+
+        public void ResetPass(ChangePassFM reset)
+        {
+            reset.NewPass = RngPass();
+            reset.ConfirmPass = reset.NewPass;
+            UpdateUser(reset);
+        }
     }
 }
