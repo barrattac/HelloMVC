@@ -51,10 +51,10 @@ namespace HelloMVC.Controllers
             //else return to edit with errors
         }
         [HttpGet]
-        public ActionResult ChangePassword(int ID)
+        public ActionResult ChangePassword()
         {
             UserService users = new UserService();
-            return View(users.GetChangePassFM(ID));
+            return View(users.GetChangePassFM(1/*Change 1 to user.ID*/));  
         }
         [HttpPost]
         public ActionResult ChangePassword(ChangePassFM pass)
