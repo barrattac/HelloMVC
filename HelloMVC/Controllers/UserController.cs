@@ -54,6 +54,10 @@ namespace HelloMVC.Controllers
         public ActionResult ChangePassword()
         {
             UserService users = new UserService();
+            if (Session["UserId"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View(users.GetChangePassFM(Convert.ToInt32(Session["UserId"])));
         }
         [HttpPost]
