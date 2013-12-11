@@ -54,7 +54,7 @@ namespace HelloMVC.Controllers
         public ActionResult ChangePassword()
         {
             UserService users = new UserService();
-            return View(users.GetChangePassFM(1/*Change 1 to user.ID*/));  
+            return View(users.GetChangePassFM(Convert.ToInt32(Session["UserId"])));
         }
         [HttpPost]
         public ActionResult ChangePassword(ChangePassFM pass)
@@ -80,6 +80,5 @@ namespace HelloMVC.Controllers
             users.ResetPass(users.GetChangePassFM(ID));
             return RedirectToAction("Index");
         }
-
     }
 }
